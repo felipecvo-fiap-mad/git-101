@@ -1,1 +1,0 @@
-Hybrid Mobile Application Development
