@@ -1,3 +1,3 @@
-Mesmo a menor pessoa pode mudar o curso do futuro.
+Não há nada como o desejo de um amigo para nos dar coragem.
 
-Você pode não ter esperança, mas isso não significa que você não deva lutar.
+A verdade é mais rara do que o ouro puro, mas é mais preciosa do que tudo o que o ouro pode comprar.
