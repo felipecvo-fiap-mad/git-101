@@ -8,6 +8,11 @@ Após concluir cada tarefa, não se esqueça de enviar suas alterações para o 
 
 ```
 git remote add template git@github.com:felipecvo-fiap-mad/git-101.git
+git fetch template
+git reset --hard template/main
+git push --force
+git push origin --tags "refs/remotes/template/*:refs/heads/*"
+git remote remove template
 ```
 
 ## Tarefa 1
