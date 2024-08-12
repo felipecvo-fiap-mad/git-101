@@ -1,0 +1,104 @@
+name: Autograding Tests
+'on':
+  push:
+    branches:
+      - '**'
+  repository_dispatch:
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Tarefa 1
+      id: tarefa-1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Tarefa 1
+        setup-command: ''
+        command: "./.mad/test-task01.sh"
+        timeout: 10
+        max-score: 10
+    - name: Tarefa 2
+      id: tarefa-2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Tarefa 2
+        setup-command: ''
+        command: "./.mad/test-task02.sh"
+        timeout: 10
+        max-score: 10
+    - name: Tarefa 3
+      id: tarefa-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Tarefa 3
+        setup-command: ''
+        command: "./.mad/test-task03.sh"
+        timeout: 10
+        max-score: 10
+    - name: Tarefa 4
+      id: tarefa-4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Tarefa 4
+        setup-command: ''
+        command: "./.mad/test-task04.sh"
+        timeout: 10
+        max-score: 10
+    - name: Tarefa 5
+      id: tarefa-5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Tarefa 5
+        setup-command: ''
+        command: "./.mad/test-task05.sh"
+        timeout: 10
+        max-score: 10
+    - name: Tarefa 6
+      id: tarefa-6
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Tarefa 6
+        setup-command: ''
+        command: "./.mad/test-task06.sh"
+        timeout: 10
+        max-score: 20
+    - name: Tarefa 7
+      id: tarefa-7
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Tarefa 7
+        setup-command: ''
+        command: "./.mad/test-task07.sh"
+        timeout: 10
+        max-score: 20
+    - name: Tarefa 8
+      id: tarefa-8
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Tarefa 8
+        setup-command: ''
+        command: "./.mad/test-task08.sh"
+        timeout: 10
+        max-score: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TAREFA-1_RESULTS: "${{steps.tarefa-1.outputs.result}}"
+        TAREFA-2_RESULTS: "${{steps.tarefa-2.outputs.result}}"
+        TAREFA-3_RESULTS: "${{steps.tarefa-3.outputs.result}}"
+        TAREFA-4_RESULTS: "${{steps.tarefa-4.outputs.result}}"
+        TAREFA-5_RESULTS: "${{steps.tarefa-5.outputs.result}}"
+        TAREFA-6_RESULTS: "${{steps.tarefa-6.outputs.result}}"
+        TAREFA-7_RESULTS: "${{steps.tarefa-7.outputs.result}}"
+        TAREFA-8_RESULTS: "${{steps.tarefa-8.outputs.result}}"
+      with:
+        runners: tarefa-1,tarefa-2,tarefa-3,tarefa-4,tarefa-5,tarefa-6,tarefa-7,tarefa-8
