@@ -1,5 +1,11 @@
 #!/bin/bash
 
+fail() {
+  git checkout main
+  echo "$1"
+  exit 1
+}
+
 # Define the branch, file name, and expected contents
 BRANCH="who-else"
 FILE_NAME="sherlock.txt"
@@ -10,8 +16,7 @@ echo "Checking out the $BRANCH branch..."
 git checkout $BRANCH
 
 if [ $? -ne 0 ]; then
-  echo "Failed to checkout branch $BRANCH. Exiting."
-  exit 1
+  fail "Failed to checkout branch $BRANCH. Exiting."
 fi
 
 # Check if the sherlock.txt file exists
@@ -19,8 +24,7 @@ echo "Checking if $FILE_NAME exists..."
 if [ -f "$FILE_NAME" ]; then
   echo "$FILE_NAME exists."
 else
-  echo "$FILE_NAME does not exist. Exiting."
-  exit 1
+  fail "$FILE_NAME does not exist. Exiting."
 fi
 
 # Check the contents of the file
@@ -35,10 +39,8 @@ else
   echo -e "$EXPECTED_CONTENTS"
   echo "Actual contents:"
   echo -e "$ACTUAL_CONTENTS"
-  exit 1
+  fail
 fi
-
-git checkout main
 
 echo "Task 3 validation completed successfully."
 

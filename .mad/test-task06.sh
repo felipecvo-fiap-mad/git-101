@@ -1,5 +1,11 @@
 #!/bin/bash
 
+fail() {
+  git checkout main
+  echo "$1"
+  exit 1
+}
+
 # Define the branch and commit hash to revert
 BRANCH="daring"
 COMMIT_HASH="c8e5661"
@@ -9,8 +15,7 @@ echo "Checking out the $BRANCH branch..."
 git checkout $BRANCH
 
 if [ $? -ne 0 ]; then
-  echo "Failed to checkout branch $BRANCH. Exiting."
-  exit 1
+  fail "Failed to checkout branch $BRANCH. Exiting."
 fi
 
 # Check if the commit has been reverted
@@ -20,11 +25,8 @@ echo "Checking if commit $COMMIT_HASH has been reverted..."
 if git log --grep="^Revert" | grep -q "$COMMIT_HASH"; then
   echo "The commit $COMMIT_HASH has been successfully reverted."
 else
-  echo "The commit $COMMIT_HASH is still present. Exiting."
-  exit 1
+  fail "The commit $COMMIT_HASH is still present. Exiting."
 fi
-
-git checkout main
 
 echo "Task 6 validation completed successfully."
 

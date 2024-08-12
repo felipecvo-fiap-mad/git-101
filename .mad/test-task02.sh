@@ -1,5 +1,11 @@
 #!/bin/bash
 
+fail() {
+  git checkout main
+  echo "$1"
+  exit 1
+}
+
 # Define file names and branch
 BATCH_FILE="get_system_info.bat"
 SYSTEMINFO_FILE="systeminfo.txt"
@@ -15,8 +21,7 @@ echo "Checking out the $BRANCH branch..."
 git checkout $BRANCH
 
 if [ $? -ne 0 ]; then
-  echo "Failed to checkout branch $BRANCH. Exiting."
-  exit 1
+  fail "Failed to checkout branch $BRANCH. Exiting."
 fi
 
 # Check if the systeminfo.txt file exists
@@ -24,8 +29,7 @@ echo "Checking if $SYSTEMINFO_FILE exists..."
 if [ -f "$SYSTEMINFO_FILE" ]; then
   echo "$SYSTEMINFO_FILE exists."
 else
-  echo "$SYSTEMINFO_FILE does not exist. Exiting."
-  exit 1
+  fail "$SYSTEMINFO_FILE does not exist. Exiting."
 fi
 
 # Verify that systeminfo.txt is added to the repository
@@ -33,15 +37,13 @@ echo "Checking if $SYSTEMINFO_FILE is added to the repository..."
 if git ls-files --error-unmatch "$SYSTEMINFO_FILE" > /dev/null; then
   echo "$SYSTEMINFO_FILE is added to the repository."
 else
-  echo "$SYSTEMINFO_FILE is not added to the repository. Exiting."
-  exit 1
+  fail "$SYSTEMINFO_FILE is not added to the repository. Exiting."
 fi
 
 # Check if execution.log is ignored and not committed
 echo "Checking if $EXECUTION_LOG is ignored and not committed..."
 if git ls-files --error-unmatch "$EXECUTION_LOG" > /dev/null 2>&1; then
-  echo "$EXECUTION_LOG is tracked by Git. Exiting."
-  exit 1
+  fail "$EXECUTION_LOG is tracked by Git. Exiting."
 else
   echo "$EXECUTION_LOG is not tracked by Git."
 fi
@@ -51,11 +53,8 @@ echo "Checking if $EXECUTION_LOG is listed in .gitignore..."
 if grep -q "$EXECUTION_LOG" .gitignore; then
   echo "$EXECUTION_LOG is listed in .gitignore."
 else
-  echo "$EXECUTION_LOG is not listed in .gitignore."
-  exit 1
+  fail "$EXECUTION_LOG is not listed in .gitignore."
 fi
-
-git checkout main
 
 echo "Task 2 validation completed successfully."
 
