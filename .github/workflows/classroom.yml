@@ -1,9 +1,9 @@
 name: Autograding Tests
 'on':
-- push
+  push:
     branches:
       - '**'
-- repository_dispatch
+  repository_dispatch:
 permissions:
   checks: write
   actions: read

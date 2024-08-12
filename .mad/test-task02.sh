@@ -12,10 +12,6 @@ SYSTEMINFO_FILE="systeminfo.txt"
 EXECUTION_LOG="execution.log"
 BRANCH="systeminfo"
 
-# Fetch the latest changes from the remote repository
-echo "Fetching the latest changes from the remote repository..."
-git fetch origin
-
 # Check out the systeminfo branch
 echo "Checking out the $BRANCH branch..."
 git checkout $BRANCH

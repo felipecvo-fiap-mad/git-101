@@ -5,6 +5,10 @@ BRANCH="main"
 NEW_FILE="melhor-curso.md"
 EDITED_FILE="melhor-disciplina.md"
 
+# Check out the systeminfo branch
+echo "Checking out the $BRANCH branch..."
+git checkout $BRANCH
+
 # Start logging
 echo "Starting validation for Task 1..."
 
