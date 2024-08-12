@@ -4,6 +4,17 @@ Neste desafio, você será introduzido ao `git`, uma ferramenta essencial para a
 
 Após concluir cada tarefa, não se esqueça de enviar suas alterações para o repositório remoto (`origin`). Use o comando apropriado para garantir que todas as mudanças feitas localmente sejam refletidas no repositório compartilhado.
 
+## Configuração
+
+```
+git remote add template git@github.com:felipecvo-fiap-mad/git-101.git
+git fetch template
+git reset --hard template/main
+git push --force
+git push origin --tags "refs/remotes/template/*:refs/heads/*"
+git remote remove template
+```
+
 ## Tarefa 1
 
 Sua primeira tarefa é criar um commit na branch principal do projeto. Para isso, você precisará adicionar um novo arquivo ao repositório e também editar um arquivo existente, incluindo ambas as mudanças no mesmo commit.
@@ -85,17 +96,17 @@ Você precisa restaurar um arquivo da branch `chapter3` e trazê-lo para a branc
 ### Requisitos
 
 - Mudar para a branch `chapter4`.
-- Utilizar o comando apropriado para restaurar o arquivo específico da branch `chapter3` para a branch `chapter4`.
+- Utilizar o comando apropriado para restaurar o arquivo `chapter3.md` da branch `chapter3` para a branch `chapter4`.
 - Verificar se o arquivo foi restaurado corretamente e contém o conteúdo da branch `chapter3`.
 - Adicionar o arquivo restaurado ao controle de versão.
 - Criar um commit com uma mensagem descritiva para registrar a restauração do arquivo.
 
 ## Tarefa 8
 
-Você precisa resetar todas as alterações realizadas na branch `feature` para que ela reflita a versão atual da branch `main`. O objetivo é garantir que a branch `feature` seja restaurada para o estado exato da branch `main`, descartando todas as mudanças feitas na `feature`.
+Você precisa resetar todas as alterações realizadas na branch `feature` para que ela reflita a versão remota da branch `main`. O objetivo é garantir que a branch `feature` seja restaurada para o estado exato da branch remota `main`, descartando todas as mudanças feitas na `feature`.
 
 ### Requisitos
 
 - Mudar para a branch `feature`.
-- Utilizar o comando apropriado para resetar a branch `feature` para a versão da branch `main`.
-- Garantir que todas as alterações na branch `feature` sejam descartadas e que a branch reflita exatamente o estado da branch `main`.
+- Utilizar o comando apropriado para resetar a branch `feature` para a versão remota da branch `main`.
+- Garantir que todas as alterações na branch `feature` sejam descartadas e que a branch reflita exatamente o estado da branch remota `main`.
