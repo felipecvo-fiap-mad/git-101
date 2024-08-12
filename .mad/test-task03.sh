@@ -9,7 +9,7 @@ fail() {
 # Define the branch, file name, and expected contents
 BRANCH="who-else"
 FILE_NAME="sherlock.txt"
-EXPECTED_CONTENTS="10 slovakia.md Jude Bellingham"
+EXPECTED_CONTENTS="11 slovakia.md Jude Bellingham"
 
 # Check out the who-else branch
 echo "Checking out the $BRANCH branch..."
