@@ -7,7 +7,7 @@ Após concluir cada tarefa, não se esqueça de enviar suas alterações para o 
 ## Configuração
 
 ```
-git remote add template git@github.com:felipecvo-fiap-mad/git-101.git
+git remote add template https://github.com/felipecvo-fiap-mad/git-101.git
 git fetch template
 git reset --hard template/main
 git push --force
